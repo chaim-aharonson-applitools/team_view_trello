@@ -1,0 +1,130 @@
+body *{
+    vertical-align: middle;
+    /*line-height: 22px;*/
+}
+body > div{
+    display: flex;
+    padding-bottom: 5px;
+}
+ul{
+    padding: 0;
+    margin: 0;
+    border-bottom: 1px solid #bbb;
+}
+li{
+    list-style: none;
+    width: 100%;
+    display: flex;
+    padding: 3px 0;
+}
+li:hover{
+    background-color: #FEFEFE;
+}
+li label{
+    /* border:1px solid red; */
+    flex-grow: 1;
+}
+li span{
+    width: 18px;
+    text-align: center;
+    cursor: default;
+}
+li span:before{
+    content: 'X';
+    font-weight: bold;
+    color: transparent;
+}
+#newUserWrap{
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+}
+#newUserWrap.active{
+    height: auto;
+    overflow: hidden;
+}
+#usersList.remove-mode{
+    /* border: 1px solid cyan; */
+}
+#usersList.remove-mode input{
+    opacity: 0;
+}
+#usersList.remove-mode li span:before{
+    color: #666;
+    cursor: pointer;
+}
+#usersList.remove-mode li:hover span:before{
+    color: darkred;
+}
+
+#btn_edit{
+    width: 22px;
+    border-radius: 5px;
+    border: 1px solid #666;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 18px;
+}
+#btn_edit img{
+    margin-top: 4px;
+    max-width: 18px;
+    max-height: 18px;
+}
+#btn_edit.active{
+    background-color: #666;
+    color: #fff;
+}
+#close{
+    cursor: pointer;padding: 4px;font-weight:bold;
+}
+#toggleView{
+    margin-top: 5px;
+    width: 200px;      
+    display: flex; 
+    border-radius: 4px;
+    overflow: hidden;  
+    background-color: #fff;
+    color: #666;
+}
+#toggleView > input{
+    display: none;
+}
+#toggleView > div{
+    width: 50%;   
+    padding: 4px 4px 4px 18px;  
+    position: relative;   
+}
+#toggleView > div:after, #toggleView > div:before{
+    border-radius: 50%;
+    position: absolute;
+    left: 8px;
+    top: 12px;
+    transform: translate(-50%, -50%);
+}
+#toggleView > div:after{
+    content: '';
+    width: 6px;
+    height: 6px;
+    background-color: transparent;
+}
+#toggleView > div:before{
+    content: "";
+    width: 8px;
+    height: 8px;
+    border:1px solid #666;
+}
+#toggleView.active > div:first-of-type:after, #toggleView:not(.active) > div:last-of-type:after{
+    background-color: darkblue;
+}
+
+#title{
+    font-size: 16px;
+    font-weight: bold;
+}
+#title img{
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%, -50%);
+}

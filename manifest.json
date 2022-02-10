@@ -1,0 +1,26 @@
+{
+	"name": "Highlight team on Trello page",
+	"action": {
+		"default_title": "Team Trello",
+		"default_icon": "user-icon.png",
+		"default_popup": "popup.html"
+	},
+	"manifest_version": 3,
+	"version": "0.1",
+	"description": "manage team members and highlights their relevant tickets",
+	"permissions": [
+		"activeTab",
+		"scripting"
+	],
+	"content_scripts": [
+		{
+			"matches": [
+				"https://trello.com/*"
+			],
+			"run_at": "document_idle",
+			"js": [
+				"contentScript.js"
+			]
+		}
+	]
+}
