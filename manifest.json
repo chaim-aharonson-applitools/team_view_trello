@@ -6,7 +6,7 @@
 		"default_popup": "popup.html"
 	},
 	"manifest_version": 3,
-	"version": "0.1",
+	"version": "0.2",
 	"description": "manage team members and highlights their relevant tickets",
 	"permissions": [
 		"activeTab",

@@ -1,6 +1,9 @@
+body{
+    width: 300px;
+    position: relative;
+}
 body *{
     vertical-align: middle;
-    /*line-height: 22px;*/
 }
 body > div{
     display: flex;
@@ -9,7 +12,7 @@ body > div{
 ul{
     padding: 0;
     margin: 0;
-    border-bottom: 1px solid #bbb;
+    /* border-bottom: 1px solid #bbb; */
 }
 li{
     list-style: none;
@@ -34,26 +37,57 @@ li span:before{
     font-weight: bold;
     color: transparent;
 }
-#newUserWrap{
+#allUsersWrap{
     height: 0;
-    padding: 0;
+    padding: 0 10px 0 0;
     overflow: hidden;
+    position: relative;
 }
-#newUserWrap.active{
+
+#allUsersWrap.active{
     height: auto;
+    display: block;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    border: 1px solid #bbb;
+}
+#allUsersWrap.active #warn{
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    color: darkred;
+    padding: 10px;
+    background-color: #FEFEFE;
+    transition: opacity 0.4s linear;
+}
+#allUsersWrap.active > ul{
+    height: auto;
+    max-height: 150px;
+    overflow-y: scroll;
+    margin-bottom: 5px;
+}
+#unassignedOnly{
+    border-bottom: 1px solid #bbb;
+}
+#teamList{
+    padding: 0 10px 0 0;
+    height: 150px;
+    overflow-y: scroll;
+    border: 1px solid #bbb;
+    /* border-bottom: 1px solid #bbb; */
+}
+#teamList.edit-mode input{
+    opacity: 0;
+    width:0;
     overflow: hidden;
 }
-#usersList.remove-mode{
-    /* border: 1px solid cyan; */
-}
-#usersList.remove-mode input{
-    opacity: 0;
-}
-#usersList.remove-mode li span:before{
+#teamList.edit-mode li span:before{
     color: #666;
     cursor: pointer;
 }
-#usersList.remove-mode li:hover span:before{
+#teamList.edit-mode li:hover span:before{
     color: darkred;
 }
 
@@ -76,7 +110,9 @@ li span:before{
     color: #fff;
 }
 #close{
-    cursor: pointer;padding: 4px;font-weight:bold;
+    cursor: pointer;
+    padding: 4px;
+    font-weight:bold;
 }
 #toggleView{
     margin-top: 5px;
