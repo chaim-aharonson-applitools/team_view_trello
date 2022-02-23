@@ -34,7 +34,9 @@
   }
   let users,
     selected = [],
-    viewMode = true;
+    viewMode = true,
+    inProgress = false,
+    lastUrl = null;
   const ls = new LocalstorageHandler();
   function isDefined(variable) {
     return !(typeof variable === "undefined" || variable === null);
@@ -61,6 +63,7 @@
   }
   function highlightUsersOnPage() {
     const dom = document.querySelectorAll(`#board .list-card`);
+    inProgress = true;
     if (dom && dom.length) {
       const isUnassigned = selected.includes("unassigned");
       const _selected = isUnassigned ? users : selected;
@@ -82,6 +85,7 @@
           item.classList.add("my-trello");
         }
       });
+      inProgress = false;
     } else {
       // wait for Trello page to load its content
       setTimeout(() => {
@@ -129,6 +133,17 @@
       style.styleSheet.cssText = css;
     } else {
       style.appendChild(document.createTextNode(css));
+    }
+  }
+  function onUrlChange() {
+    if (!inProgress) {
+      inProgress = true;
+      setTimeout(()=>{
+        console.log("URL changed!", location.href);
+        handleCss();
+        remove();
+        highlightUsersOnPage();
+      }, 1000)
     }
   }
   users = ls._get("users") || [];
@@ -182,5 +197,12 @@
   });
   handleCss();
   highlightUsersOnPage();
-  //addCssToPage();
+  lastUrl = location.href;
+  new MutationObserver(() => {
+    const url = location.href;
+    if (url !== lastUrl) {
+      lastUrl = url;
+      onUrlChange();
+    }
+  }).observe(document, { subtree: true, childList: true });
 })();
